@@ -207,10 +207,10 @@ _dt_read_license() {
 # enforce_license
 #
 # Checks for a valid license before the calling script continues.
-#   • Valid file found  → returns immediately (transparent to the user).
-#   • No file found     → prompts for the 16-digit key (hidden input).
-#     - Correct key     → writes license file, returns.
-#     - Wrong key × 3   → prints error and exits the entire script.
+#   • Valid file found  - returns immediately (transparent to the user).
+#   • No file found     - prompts for the 16-digit key (hidden input).
+#     - Correct key     - writes license file, returns.
+#     - Wrong key × 3   - prints error and exits the entire script.
 enforce_license() {
     # ── Already licensed ──────────────────────────────────────────────────────
     if _dt_read_license; then
@@ -238,7 +238,7 @@ enforce_license() {
         if _dt_check_key "$raw_key"; then
             saved_path=$(_dt_write_license "$raw_key")
             echo ""
-            echo "  ✓ License accepted."
+            echo "   License accepted."
             echo "    Activation file written to: $saved_path"
             echo ""
             return 0
@@ -246,11 +246,11 @@ enforce_license() {
 
         remaining=$(( _DT_MAX_ATTEMPTS - attempt ))
         if (( remaining > 0 )); then
-            echo "  ✗ Invalid key — ${remaining} attempt(s) remaining."
+            echo "   Invalid key — ${remaining} attempt(s) remaining."
             echo ""
         else
             echo ""
-            echo "  ✗ Too many failed attempts."
+            echo "   Too many failed attempts."
             echo "    Contact your Scrum Master for a valid license key."
             echo ""
             exit 1
@@ -269,11 +269,11 @@ _dt_cli_check() {
     echo "DeelTech Solutions — License Check"
     echo "-----------------------------------"
     if _dt_read_license; then
-        echo "✓ Valid license found on this machine."
+        echo " Valid license found on this machine."
         echo ""
         exit 0
     else
-        echo "✗ No valid license found."
+        echo " No valid license found."
         echo ""
         exit 1
     fi
