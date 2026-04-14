@@ -2,3 +2,23 @@ My Bash script is used to create and delete user accounts in Ubuntu.  It must be
 When creating a user, the script takes the first and last name as the input.  It then removes any commas and converts all letters to lowercase.  The username is created in the format "first.last".  For example, Jimmy John would be converted into the username "jimmy.john". The password is automatically generated as "firstlastDEELTECH". Before creating a new account the script checks to see if the username already exists.  If the username does not exist it creates the user a home directory and BASH shell.  Then it creates a password and forces the user to change their password on the first login.
 When deleting a user, the script formats the name the same way it does to generate the usernames.  It checks if the user exists before attempting to delete.  If the user exist then it deletes the account and the home directory.  If the user does not exist it prints a message saying so and does nothing.
 In conclusion this script simplifies user on boarding and account management by automating the creation and deletion of users while preventing duplicate users.
+
+
+The commands for the license.sh:​
+
+Revoke: In this command, it will basically remove the active license file from your machine, so that you
+can't  enter the interface without the key.​ this way you will have enter the key again to enter the interface.
+
+How to command: ./license.sh revoke​
+
+Check: in this command, it will check for the license file that is active in your machine, it will search for
+it and outputs "Valid license found on this machine." If it's on the machine, and if not, it will output "No
+valid license found."​
+
+How to command: ./license.sh check​
+
+Generate: In this command, it will generate the key that the scrum master/management has to copy
+and email to the users, and the hex code for security purposes that the user/server management needs
+to copy the code and paste it inside the file (the very top of the file)​
+
+How to command: ./license.sh generate
