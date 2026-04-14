@@ -39,6 +39,8 @@ You will have to type the first name, space, last name of the person you would l
 4. To delete all of the existing CS faculty users from the database, type 4 and enter. 
 This will do the same functions as pressing 1 (scraping and parsing), but instead of adding the users, it will delete them.
 
+Commands for user_manual.sh
+
 To run my script call user_management.sh with sudo privileges.
 
 The script will take the first and last name and format a username and password with that information. Usernames are generated using the format "first.last".  The password is formated with "firstlastDEELTECH".
