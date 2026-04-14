@@ -39,9 +39,8 @@ You will have to type the first name, space, last name of the person you would l
 4. To delete all of the existing CS faculty users from the database, type 4 and enter. 
 This will do the same functions as pressing 1 (scraping and parsing), but instead of adding the users, it will delete them.
 
+To run my script call user_management.sh with sudo privileges.
 
+The script will take the first and last name and format a username and password with that information. Usernames are generated using the format "first.last".  The password is formated with "firstlastDEELTECH".
 
-My Bash script is used to create and delete user accounts in Ubuntu.  It must be run using sudo privileges because it makes system level changes.  This script automates the proc>
-When creating a user, the script takes the first and last name as the input.  It then removes any commas and converts all letters to lowercase.  The username is created in the f>
-When deleting a user, the script formats the name the same way it does to generate the usernames.  It checks if the user exists before attempting to delete.  If the user exist t>
-In conclusion this script simplifies user on boarding and account management by automating the creation and deletion of users while preventing duplicate users.
+To run the script simply run create_user "FirstName" "LastName"
