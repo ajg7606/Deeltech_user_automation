@@ -84,7 +84,7 @@ _dt_canonical_key() {
     local raw="$1"
     local digits
     digits=$(printf '%s' "$raw" \
-        | tr -d '[:space:]-' \
+        | tr -d $'[:space:]\r-' \
         | tr '[:lower:]' '[:upper:]')
 
     if [[ ${#digits} -ne 16 ]]; then
@@ -331,7 +331,7 @@ _dt_cli_generate() {
     echo ")"
     echo ""
     echo "══════════════════════════════════════════════════════════"
-    echo "  Email this key to the instructor and TA (Scrum Master):"
+    echo "  Email this key(Scrum Master):"
     echo "  $canon"
     echo "══════════════════════════════════════════════════════════"
     echo ""
