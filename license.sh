@@ -34,17 +34,17 @@
 # =============================================================================
 
 # Split HMAC secret — base64-encoded halves (AI-assisted obfuscation)
-_DT_SECRET_A="RGVlbFRlY2hT"        # base64 fragment A
-_DT_SECRET_B="cHJpbmcyMDI2"        # base64 fragment B
-
+_DT_SECRET_A="cGE="
+_DT_SECRET_B="c3M="
 # HMAC-SHA256 digest of the canonical license key "DEEL-TECH-2026-0001"
 # Replace both lines with output from:  bash license.sh generate
 _DT_HMAC_DIGEST=(
-    "a7f3c2e1b4d5908f"
-    "6e2a1c3b7d4f5e90"
-    "8a1b2c3d4e5f6071"
-    "8293a4b5c6d7e8f9"
+    "b8802e4ce30a0a5f"
+    "686ceaf7e9b8edf1"
+    "320b78a778a52173"
+    "e912305924aa806d"
 )
+
 
 # License file — name chosen by team ("svc_runtime" looks like a system file)
 _DT_LICENSE_PATHS=(
