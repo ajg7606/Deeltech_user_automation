@@ -1,7 +1,7 @@
 # Deeltech_user_automation
 
 ##Description
-This project automates falculty account creation for TNTech using Bash scripting.
+- This project automates falculty account creation for TNTech using Bash scripting.
 
 ##Features
 - Web scrapping of faculty names
