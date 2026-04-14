@@ -22,3 +22,20 @@ and email to the users, and the hex code for security purposes that the user/ser
 to copy the code and paste it inside the file (the very top of the file)​
 
 How to command: ./license.sh generate
+
+
+The commands for main.sh
+
+to run the program, execute ./main.sh. Then choose an option below
+
+1. To add users from the CS faculty website, type 1 and enter. This will scrape the CS faculty website, 
+parse it for first and last names of faculty, and use those to add users to the database.
+
+2. To delete a single user from the database, type 2 and enter. You will then be prompted to enter the name of the person you would like to delete. 
+You will have to type the first name, space, last name of the person you would like to delete. This must be case-sensitive as of right now. 
+
+3. To add a single user manually, type 3 and enter. You will then provide the name of the user you would like to create and press enter.
+
+4. To delete all of the existing CS faculty users from the database, type 4 and enter. 
+This will do the same functions as pressing 1 (scraping and parsing), but instead of adding the users, it will delete them.
+
