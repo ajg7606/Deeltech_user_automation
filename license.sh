@@ -34,17 +34,17 @@
 # =============================================================================
 
 # Split HMAC secret — base64-encoded halves (AI-assisted obfuscation)
-_DT_SECRET_A="RGVlbFRlY2hT"        # base64 fragment A
-_DT_SECRET_B="cHJpbmcyMDI2"        # base64 fragment B
-
+_DT_SECRET_A="cGE="
+_DT_SECRET_B="c3M="
 # HMAC-SHA256 digest of the canonical license key "DEEL-TECH-2026-0001"
 # Replace both lines with output from:  bash license.sh generate
 _DT_HMAC_DIGEST=(
-    "a7f3c2e1b4d5908f"
-    "6e2a1c3b7d4f5e90"
-    "8a1b2c3d4e5f6071"
-    "8293a4b5c6d7e8f9"
+    "b8802e4ce30a0a5f"
+    "686ceaf7e9b8edf1"
+    "320b78a778a52173"
+    "e912305924aa806d"
 )
+
 
 # License file — name chosen by team ("svc_runtime" looks like a system file)
 _DT_LICENSE_PATHS=(
@@ -84,7 +84,7 @@ _dt_canonical_key() {
     local raw="$1"
     local digits
     digits=$(printf '%s' "$raw" \
-        | tr -d '[:space:]-' \
+        | tr -d $'[:space:]\r-' \
         | tr '[:lower:]' '[:upper:]')
 
     if [[ ${#digits} -ne 16 ]]; then
@@ -207,10 +207,10 @@ _dt_read_license() {
 # enforce_license
 #
 # Checks for a valid license before the calling script continues.
-#   • Valid file found  → returns immediately (transparent to the user).
-#   • No file found     → prompts for the 16-digit key (hidden input).
-#     - Correct key     → writes license file, returns.
-#     - Wrong key × 3   → prints error and exits the entire script.
+#   • Valid file found  - returns immediately (transparent to the user).
+#   • No file found     - prompts for the 16-digit key (hidden input).
+#     - Correct key     - writes license file, returns.
+#     - Wrong key × 3   - prints error and exits the entire script.
 enforce_license() {
     # ── Already licensed ──────────────────────────────────────────────────────
     if _dt_read_license; then
@@ -238,7 +238,7 @@ enforce_license() {
         if _dt_check_key "$raw_key"; then
             saved_path=$(_dt_write_license "$raw_key")
             echo ""
-            echo "  ✓ License accepted."
+            echo "   License accepted."
             echo "    Activation file written to: $saved_path"
             echo ""
             return 0
@@ -246,11 +246,11 @@ enforce_license() {
 
         remaining=$(( _DT_MAX_ATTEMPTS - attempt ))
         if (( remaining > 0 )); then
-            echo "  ✗ Invalid key — ${remaining} attempt(s) remaining."
+            echo "   Invalid key — ${remaining} attempt(s) remaining."
             echo ""
         else
             echo ""
-            echo "  ✗ Too many failed attempts."
+            echo "   Too many failed attempts."
             echo "    Contact your Scrum Master for a valid license key."
             echo ""
             exit 1
@@ -269,11 +269,11 @@ _dt_cli_check() {
     echo "DeelTech Solutions — License Check"
     echo "-----------------------------------"
     if _dt_read_license; then
-        echo "✓ Valid license found on this machine."
+        echo " Valid license found on this machine."
         echo ""
         exit 0
     else
-        echo "✗ No valid license found."
+        echo " No valid license found."
         echo ""
         exit 1
     fi
@@ -331,7 +331,7 @@ _dt_cli_generate() {
     echo ")"
     echo ""
     echo "══════════════════════════════════════════════════════════"
-    echo "  Email this key to the instructor and TA (Scrum Master):"
+    echo "  Email this key(Scrum Master):"
     echo "  $canon"
     echo "══════════════════════════════════════════════════════════"
     echo ""
