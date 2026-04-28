@@ -26,8 +26,6 @@ create_user() {
 	echo "$username:$password" | sudo chpasswd
 #Force change password on the first login
 	sudo chage -d 0 "$username"
-
-	echo "[SUCCESS] Created user: $username"
 	
 	echo "$first $last | Username: $username | Password: $password" >> "$OUTPUT_FILE"
 
