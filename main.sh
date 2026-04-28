@@ -4,7 +4,7 @@ source ./parser.sh
 source ./user_management.sh
 source ./clear_users.sh
 source "$(dirname "$0")/license.sh"
-#enforce_license
+enforce_license
 
 #initial decision interface
 echo "Welcome. Please choose an action:"

@@ -216,7 +216,6 @@ enforce_license() {
     if _dt_read_license; then
         return 0
     fi
-
     # ── First run or missing file — prompt for key ────────────────────────────
     echo ""
     echo "╔══════════════════════════════════════════════════════════╗"
@@ -280,6 +279,28 @@ _dt_cli_check() {
 }
 
 _dt_cli_generate() {
+
+    
+    local STORED_HASH="acd694d7ac2fd22b8f4fd7beea11b5bdf51ce706604b00a5df7e4edd0167e83b"
+
+    local user_input
+    echo -n "Enter Admin Password: "
+    read -r -s user_input < /dev/tty
+    echo ""
+    user_input=$(printf '%s' "$user_input" | tr -d '\r')
+
+    if [[ -z "$user_input" ]]; then
+        echo "Error: No password entered."
+        exit 1
+    fi
+
+    local input_hash
+    input_hash=$(printf '%s' "$user_input" | sha256sum | awk '{print $1}')
+
+    if [[ "$input_hash" != "$STORED_HASH" ]]; then
+        echo "incorrect Admin Password: PLEASE REOPEN THE OPERATION!!"
+        exit 1
+    fi
     echo ""
     echo "DeelTech Solutions — License Key Generator"
     echo "============================================"
@@ -336,7 +357,6 @@ _dt_cli_generate() {
     echo "══════════════════════════════════════════════════════════"
     echo ""
 }
-
 _dt_cli_revoke() {
     echo ""
     echo "DeelTech Solutions — Revoke License"
